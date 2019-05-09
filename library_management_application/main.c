@@ -36,7 +36,7 @@ void add_books(struct Book library[] ,const int max ){
 }
 
 //module 2
-void print((struct Book library[] ,const int max ){
+void print_books((struct Book library[] ,const int max ){
   printf("\n Hi.. we are printing books from library array to SCREEN\n");
 
   for( int i = 0 ; i < MAX ; i++)
@@ -50,7 +50,7 @@ void print((struct Book library[] ,const int max ){
 }
 
 //module 3
-void search(struct Book library[] ,const int max , int key){
+void search_book(struct Book library[] ,const int max , int key){
   int key;
   int position = -1;
 
@@ -77,3 +77,76 @@ void search(struct Book library[] ,const int max , int key){
     printf("Book price: %d \n", library[position].price );
   }
 }
+
+// ------------------ main contral module--------------------------------------
+int main()
+{
+  int max;
+  printf("\nEnter the maximum number of Books: ");
+  scanf("%d", &max);
+  struct Book book_array[max];
+  int option, number; int key;
+
+  int vech_array_empty = 1 ;
+
+  do{
+    system("cls");
+    printf("\n=============== MAIN MENU ===============\n");
+    printf("\n\n    1 - Is array full \n    2 - ADD \n    3 - PRINT \n    4 - SEARCH \n       5 - EXIT \n");
+
+    printf("\n\nPlease enter your choice: ");
+    scanf("%d", &option);
+    if( option == 1 )
+    {
+      if(book_array_empty == 1)
+      {
+        printf( "\n  Array EMPTY..... ADD Books.........: ");
+        system("pause");
+      }
+      else
+      {
+        printf("\n Array FULL......DO NOT ADD MORE.........: ");
+        system("pause");
+      }
+    }
+    else if(option == 2 &&  book_array_empty == 1 )
+    {
+      add_books(book_array , max) ;
+      book_array_empty  = 0 ;
+      system("pause");
+    }
+    else if(option == 3)
+    {
+      system("cls");
+      print_books(book_array, max);
+      system("pause");
+    }
+    else if(option == 4)
+    {
+
+      system("pause");
+
+      struct Book found_Book;
+      system("cls");
+      printf("\nPlease enter the Book code number to search: ");
+      scanf("%d", &key);
+      search_book(book_array, max, key);  system("pause");
+
+    }
+
+
+    else if(option == 5)
+    {
+      printf("\nEnd of the Menu...\n");
+      break;
+    }
+
+  } while(option != 5) ;
+
+  printf("\n\n\n End of the Control Module\n");
+
+  return 0;
+
+}
+
+// ----------------------end of main control module------------------------------
