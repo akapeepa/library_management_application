@@ -41,9 +41,39 @@ void print((struct Book library[] ,const int max ){
 
   for( int i = 0 ; i < MAX ; i++)
   {
-    printf("\ncode: %d \n" , factory[i].code);
-    printf("brand: %s " , factory[i].brand);
-    printf("color: %s " , factory[i].color);
-    printf("price: %d " , factory[i].price);
+    printf("\ncode: %d \n" , library[i].code);
+    printf("title: %s " , library[i].title);
+    printf("author: %s " , library[i].author);
+    printf("isbn: %s " , library[i].isbn);
+    printf("price: %d " , library[i].price);
+  }
+}
+
+//module 3
+void search(struct Book library[] ,const int max , int key){
+  int key;
+  int position = -1;
+
+  system("cls");
+  printf("\nPlease enter the book code  to search: ");
+  scanf("%d", &key);
+
+  for(int index = 0 ; index < MAX ; index++)
+  {
+    if(library[index].code == key)
+    {
+      position = index ;    break;
+    }
+  }
+  if(position == -1)
+  {
+    printf("Book %d not found: ", key);
+  }
+  else{
+    printf("Book code: %d \n", library[position].code );
+    printf("Book title: %s \n", library[position].title );
+    printf("Book author: %s \n", library[position].author );
+    printf("Book isbn: %s \n", library[position].isbn );
+    printf("Book price: %d \n", library[position].price );
   }
 }
